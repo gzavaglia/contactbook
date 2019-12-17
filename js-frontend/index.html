@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title>Contact Book</title>
+</head>
+<body>
+    <div class="container"> 
+        <h1>Contact Book</h1>
+        <div id="new-contact-container">
+            <form id="new-contact-form">
+                Name:
+                <input type="text"/> </br>
+                Phone Number:
+                <input type="text" /> </br>
+                E-Mail Address: 
+                <input type="text" /> </br>
+                
+                <input type="submit" />
+            </form>
+        </div>
+        
+        <div id="contacts-container" >
+
+        </div>
+    </div>
+    <script src="src/components/contacts.js"> </script>
+    <script src="src/components/app.js"></script>
+    <script src="src/adapters/ContactsAdapter.js"></script>
+    <script src="src/index.js"></script>
+</body>
+</html>
