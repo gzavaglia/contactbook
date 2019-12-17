@@ -2,15 +2,17 @@ class Contacts{
     constructor(){
         this.contacts = []
         this.adapter = new ContactsAdapter()
-        //this.bindEventListeners()
+        this.initBindingsAndEventListeners()
         this.fetchAndLoadWires()
     }
+
+    initBindingsAndEventListeners()
+    
 
     fetchAndLoadWires(){
         this.adapter
             .getContacts()
             .then(contacts => {
-                //return console.log(wires)
                 contacts.forEach(contact => this.contacts.push(new Contact(contact)))
         })
         .then( () => {
@@ -20,8 +22,9 @@ class Contacts{
 
     render(){
         //console.log('rendering.....')
+        const contactsArray = this.contacts.map(con => `<li>${con.name}</li>`)
+        const contactsString = contactsArray.join('')
         const contactsContainer = document.getElementById('contacts-container')
-        contactsContainer.innerHTML = 'them peeps dawg'
-        console.log('my peeps dawg', this.contacts)
+        contactsContainer.innerHTML = contactsString
     }
 }
