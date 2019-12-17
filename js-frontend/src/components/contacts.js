@@ -6,7 +6,16 @@ class Contacts{
         this.fetchAndLoadWires()
     }
 
-    initBindingsAndEventListeners()
+    initBindingsAndEventListeners(){
+        this.contactsContainer = document.getElementById('contacts-container')
+        this.contactForm = document.getElementById('new-contact-form')
+        this.contactForm.addEventListener('submit', this.createContact)
+    }
+
+    createContact(e) {
+        e.preventDefault()
+        console.log('contacts on')
+    }
     
 
     fetchAndLoadWires(){
@@ -22,9 +31,9 @@ class Contacts{
 
     render(){
         //console.log('rendering.....')
-        const contactsArray = this.contacts.map(con => `<li>${con.name}</li>`)
-        const contactsString = contactsArray.join('')
-        const contactsContainer = document.getElementById('contacts-container')
-        contactsContainer.innerHTML = contactsString
+        //const contactsArray = this.contacts.map(con => `<li>${con.name}</li>`)
+        //const contactsString = contactsArray.join('')
+        //const contactsContainer = document.getElementById('contacts-container')
+        this.contactsContainer.innerHTML = this.contacts.map(contact => contact.renderLi()).join('')
     }
 }

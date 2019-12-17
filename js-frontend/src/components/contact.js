@@ -5,4 +5,8 @@ class Contact {
         this.phone = contactJSON.phone
         this.email = contactJSON.email
     }
+
+    renderLi(){
+        return `<li> ${this.name} </li>`
+    }
 }
