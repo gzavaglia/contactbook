@@ -11,7 +11,7 @@ class Contacts{
             .getContacts()
             .then(contacts => {
                 //return console.log(wires)
-                contacts.forEach(contact => this.contacts.push(contact))
+                contacts.forEach(contact => this.contacts.push(new Contact(contact)))
         })
         .then( () => {
             this.render()
