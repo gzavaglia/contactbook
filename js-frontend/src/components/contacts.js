@@ -8,13 +8,23 @@ class Contacts{
 
     initBindingsAndEventListeners(){
         this.contactsContainer = document.getElementById('contacts-container')
+        this.newContactName = document.getElementById('new-contact-name')
+        this.newContactPhone = document.getElementById('new-contact-phone')
+        this.newContactEmail = document.getElementById('new-contact-email')
         this.contactForm = document.getElementById('new-contact-form')
-        this.contactForm.addEventListener('submit', this.createContact)
+        this.contactForm.addEventListener('submit', this.createContact.bind(this))
     }
 
     createContact(e) {
         e.preventDefault()
-        console.log('contacts on')
+        const contactName = this.newContactName.value
+        const contactPhone = this.newContactPhone.value
+        const contactEmail = this.newContactEmail.value
+
+        this.adapter.createContact(contactName, contactPhone, contactEmail).then(contact => {
+            console.log(contact).render()
+            //this.render()
+        })
     }
     
 
@@ -30,10 +40,6 @@ class Contacts{
     }
 
     render(){
-        //console.log('rendering.....')
-        //const contactsArray = this.contacts.map(con => `<li>${con.name}</li>`)
-        //const contactsString = contactsArray.join('')
-        //const contactsContainer = document.getElementById('contacts-container')
         this.contactsContainer.innerHTML = this.contacts.map(contact => contact.renderLi()).join('')
     }
 }
