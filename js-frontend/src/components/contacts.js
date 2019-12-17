@@ -21,10 +21,14 @@ class Contacts{
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
 
-        this.adapter.createContact(contactName, contactPhone, contactEmail).then(contact => {
-            console.log(contact).render()
-            //this.render()
+        this.adapter.createContact(contactName, contactPhone, contactEmail)
+            .then(contact => {
+                this.contacts.push(new Contact(contact))
         })
+        .then( () => {
+            this.render()
+        })
+        
     }
     
 

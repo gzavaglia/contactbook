@@ -7,20 +7,20 @@ class ContactsAdapter{
         return fetch(this.baseUrl).then(res => res.json())
     }
 
-    createContact(name, phone, email){
+    async createContact(name, phone, email){
         const contact = {
             name: name,
             phone: phone,
             email: email
         }
 
-        return fetch(this.baseUrl,{
+        const res = await fetch(this.baseUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({contact})
+            body: JSON.stringify({ contact })
         })
-        .then(res => res.json())
+        return await res.json()
     }
 }
