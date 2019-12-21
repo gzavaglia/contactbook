@@ -23,4 +23,21 @@ class ContactsAdapter{
         })
         return await res.json()
     }
+
+    async updateContact(value){
+        // const contact = {
+        //     name: value,
+        //     phone: value,
+        //     email: value
+        // }
+
+        // const res = await fetch(`${this.baseUrl}/id`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ contact })
+        // })
+        // return await res.json()
+    }
 }

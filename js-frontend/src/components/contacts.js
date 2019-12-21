@@ -13,10 +13,8 @@ class Contacts{
         this.newContactEmail = document.getElementById('new-contact-email')
         this.contactForm = document.getElementById('new-contact-form')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
-        this.contactsContainer.addEventListener('dblclick', function(){
-            console.log('hi click')
-        })
-
+        this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
+        this.contactsContainer.addEventListener('blur', this.updateContact.bind(this), true)
     }
 
     createContact(e) {
@@ -33,6 +31,22 @@ class Contacts{
             this.render()
         })
         
+    }
+
+    handleDoubleClick(e){
+        //console.log(e.target)
+        const editTarget = e.target
+        editTarget.focus()
+        editTarget.contentEditable = true
+    }
+
+    updateContact(e){
+        const updateTarget = e.target
+        updateTarget.contentEditable = false
+        const newInfo = updateTarget.innerHTML
+        const id = updateTarget.dataset.id
+        //we need our adapter to make a patch request
+        this.adapter.updateContact(newInfo, id)
     }
     
 
