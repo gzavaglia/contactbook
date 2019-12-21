@@ -3,7 +3,7 @@ class Contacts{
         this.contacts = []
         this.adapter = new ContactsAdapter()
         this.initBindingsAndEventListeners()
-        this.fetchAndLoadWires()
+        this.fetchAndLoadContacts()
     }
 
     initBindingsAndEventListeners(){
@@ -13,6 +13,10 @@ class Contacts{
         this.newContactEmail = document.getElementById('new-contact-email')
         this.contactForm = document.getElementById('new-contact-form')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
+        this.contactsContainer.addEventListener('dblclick', function(){
+            console.log('hi click')
+        })
+
     }
 
     createContact(e) {
@@ -32,7 +36,7 @@ class Contacts{
     }
     
 
-    fetchAndLoadWires(){
+    fetchAndLoadContacts(){
         this.adapter
             .getContacts()
             .then(contacts => {
@@ -45,5 +49,19 @@ class Contacts{
 
     render(){
         this.contactsContainer.innerHTML = this.contacts.map(contact => contact.renderLi()).join('')
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+           if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
     }
 }

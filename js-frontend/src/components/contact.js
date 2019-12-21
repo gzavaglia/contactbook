@@ -7,6 +7,12 @@ class Contact {
     }
 
     renderLi(){
-        return `<li> ${this.name} </li>`
+        return `<button type="button" class="collapsible">${this.name}</button>
+                <div class="contactinfo">
+                    <p>Phone: ${this.phone}</p>
+                    <p>Email: ${this.email}</p>
+                </div>`
     }
+
+
 }
