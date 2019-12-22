@@ -14,7 +14,10 @@ class Contacts{
         this.contactForm = document.getElementById('new-contact-form')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
-        this.contactsContainer.addEventListener('blur', this.updateContact.bind(this), true)
+        this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
+        //DELETE ACTION???
+        //update action does not work
+        
     }
 
     createContact(e) {
@@ -41,12 +44,35 @@ class Contacts{
     }
 
     updateContact(e){
-        const updateTarget = e.target
-        updateTarget.contentEditable = false
-        const newInfo = updateTarget.innerHTML
-        const id = updateTarget.dataset.id
+        e.preventDefault()
+        const cont = e.target
+        if (e.keyCode === 13) {
+            //             event.preventDefault()
+            //             something
+            e.preventDefault()
+            cont.contentEditable = false
+            const newValue = cont.innerHTML
+            const contactid = e.target.dataset.id
+            this.adapter.updateContact(newValue, contactid)
+        }
+        // 
+        // const {id, name, phone, email} = Array.from(e.target).map(c => c.value)
+        // const params = {
+        //         id, name, phone, email
+        // }
+        
+        // this.adapter.updateContact(params, contactid)
+        
+        // const updateTarget = e.target
+        // updateTarget.contentEditable = false
+        // const newInfo = updateTarget.innerHTML
+        
         //we need our adapter to make a patch request
-        this.adapter.updateContact(newInfo, id)
+    }
+
+    deleteContacts(){
+        const contactId = this.id
+        this.adapter.deleteContact(id)
     }
     
 
