@@ -42,30 +42,28 @@ class ContactsAdapter{
     }
 
     //DELETE
-    deleteContact(id){
+//     deleteContact(contact, id){
 
-    const deleteOptionsObj = {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(id)
-    }
+//     const deleteOptionsObj = {
+//         method: "DELETE",
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({contact})
+//     }
 
-    fetch (this.baseUrl + `/${id}`, deleteOptionsObj)
-    .then(resp => resp.json())
-    .then(deletedContact => {
-        deleteContactAction(id)
-    })
-    .catch(e => console.log(e))
+//     fetch (this.baseUrl + `/${id}`, deleteOptionsObj)
+//     .then(resp => resp.json())
+//     .then(deletedContact => contact.remove())
 
-    function deleteContactAction(contact)
-    {
-        contact.remove()
-        console.log("Contact was removed successfully")
-    }
-}
+
+
+// }
+
+ async deleteContact(){
+     console.log('hi')
+ }
     //DELETE END
 
     

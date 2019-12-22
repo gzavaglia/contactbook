@@ -68,13 +68,15 @@ class Contacts{
     deleteContact(e){
         const deleteBtn = e.target
         //console.log(deleteBtn.innerText)
-        if(e.target.innerText === deleteBtn.innerText)
+        if(e.target.innerText === "Delete")
         {
             e.preventDefault()
             const deleteBtnId = e.target.dataset.id
-            //console.log(e.target.dataset.id)
+            console.log(e.target.dataset.id)
+            const contact = this.contacts.find(c => c.id == e.target.dataset.id)
             //here's all set, now moving on to the adapter
-            this.adapter.deleteContact(deleteBtnId)
+            this.adapter.deleteContact()
+            
         }
         
     }
