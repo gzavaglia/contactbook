@@ -18,9 +18,8 @@ class Contacts{
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
-        
+        this.contactsContainer.addEventListener('click', this.deleteContact.bind(this))
         //DELETE ACTION???
-        //update action does not work
         
     }
 
@@ -51,9 +50,7 @@ class Contacts{
         e.preventDefault()
         const cont = e.target.parentElement
         const children = cont.children
-        
         const contid = cont.parentElement.dataset.id
-        //console.log(contid)
         if (e.keyCode === 13) {
             const contact = this.contacts.find(c => c.id == e.target.dataset.id)
             console.log(this.contacts.find(c => c.id == e.target.dataset.id))
@@ -62,29 +59,24 @@ class Contacts{
             const em = children[3].innerText
             console.log(ph, em)
             cont.contentEditable = false
-            //const newValue = cont.innerHTML
             const contactid = e.target.dataset.id
             console.log(contactid)
             this.adapter.updateContact(nm,ph,em, contactid)
         }
-        // 
-        // const {id, name, phone, email} = Array.from(e.target).map(c => c.value)
-        // const params = {
-        //         id, name, phone, email
-        // }
-        
-        // this.adapter.updateContact(params, contactid)
-        
-        // const updateTarget = e.target
-        // updateTarget.contentEditable = false
-        // const newInfo = updateTarget.innerHTML
-        
-        //we need our adapter to make a patch request
     }
 
-    deleteContacts(){
-        const contactId = this.id
-        this.adapter.deleteContact(id)
+    deleteContact(e){
+        const deleteBtn = e.target
+        //console.log(deleteBtn.innerText)
+        if(e.target.innerText === deleteBtn.innerText)
+        {
+            e.preventDefault()
+            const deleteBtnId = e.target.dataset.id
+            //console.log(e.target.dataset.id)
+            //here's all set, now moving on to the adapter
+            this.adapter.deleteContact(deleteBtnId)
+        }
+        
     }
     
 
@@ -115,10 +107,6 @@ class Contacts{
             }
           })
         } //collapsible end 
-        const deleteBtn = document.createElement("button")
-        deleteBtn.className = "delete-contact"
-        deleteBtn.setAttribute = ("data-id", this.id)
-        deleteBtn.textContent = "Delete"
-        deleteBtn.setAttribute = ("id", "delete-btn")
+       
     }
 }
