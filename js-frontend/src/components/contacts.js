@@ -72,10 +72,17 @@ class Contacts{
         {
             e.preventDefault()
             const deleteBtnId = e.target.dataset.id
-            console.log(e.target.dataset.id)
-            const contact = this.contacts.find(c => c.id == e.target.dataset.id)
+            const contactx = this.contacts.find(c => c.id == e.target.dataset.id)
+            console.log(contactx.id)
+            //const contact = this.contacts.find(c => c.id == e.target.dataset.id)
             //here's all set, now moving on to the adapter
-            this.adapter.deleteContact()
+            this.adapter.deleteContact(contactx)
+            // .then(contacts => {
+            //     this.contacts.remove(contacts.selectedIndex)
+            // })
+            //     .then( () => {
+            //         this.render()
+            //     })
             
         }
         

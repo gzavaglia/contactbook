@@ -61,8 +61,18 @@ class ContactsAdapter{
 
 // }
 
- async deleteContact(){
+ async deleteContact(contact){
      console.log('hi')
+     
+
+    const res = await fetch(`${this.baseUrl}/${contact.id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ contact })
+    })
+    return await res.json()
  }
     //DELETE END
 
