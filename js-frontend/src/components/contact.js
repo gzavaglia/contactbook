@@ -13,15 +13,25 @@ class Contact {
         deleteBtn.setAttribute = ("data-id", this.id)
         deleteBtn.textContent = "Delete"
         deleteBtn.setAttribute = ("id", "delete-btn")
-        return `<button type="button" class="collapsible" data-id=${this.id}>${this.name}</button>
-                <div class="contactinfo">
-                    <p>Phone: ${this.phone}</p>
-                    <p>Email: ${this.email}</p>
-                </div>
-                <div class='delete-contact'>
-                    <button type="button" id="delete-btn" data-id=${this.id}>DELETE</button>
-                </div>`
+        return `<button type="button" class="collapsible" id="contact-name" data-id="${this.id}">${this.name}</button>
+        <div class="contactinfo">
+            <p>Phone: </p> 
+            <p data-id="${this.id}" id="contact-phone">${this.phone}</p>
+            <p>Email: </p> 
+            <p data-id="${this.id}" id="contact-email">${this.email}</p>
+        </div>`
+                // <div class='delete-contact'>
+                //     <button type="button" class="delete" id="delete-btn" data-id=${this.id}>DELETE</button>
+                // </div>
     }
+
+//`<button type="button" class="collapsible" data-id=${this.id}>${this.name}</button>
+//<div class="contactinfo">
+//<p>Phone: </p> 
+//<p data-id=${this.id}>${this.phone}</p>
+//<p>Email: </p> 
+//<p data-id=${this.id}>${this.email}</p>
+//</div>`
 
 
     // deleteContact(event)

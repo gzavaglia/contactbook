@@ -24,18 +24,34 @@ class ContactsAdapter{
         return await res.json()
     }
 
-    async updateContact(params, contactid){
-        const {name, phone, email} = params
-        const body = {name, phone, email}
+    // async updateContact(params, contactid){
+    //     const {name, phone, email} = params
+    //     const body = {name, phone, email}
 
-        const res = await fetch(`${this.baseUrl}/${contactid}`, {
+    //     const res = await fetch(`${this.baseUrl}/${contactid}`, {
+    //         method: 'PATCH',
+    //         headers: this.headers,
+    //         body: JSON.stringify(body)
+    //     })
+    //     return await res.json()
+    // }
+
+    async updateContact(name, phone, email, id){
+        const contact = {
+            name: name,
+            phone: phone,
+            email: email
+        }
+
+        const res = await fetch(`${this.baseUrl}/${id}`, {
             method: 'PATCH',
-            headers: this.headers,
-            body: JSON.stringify(body)
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ contact })
         })
         return await res.json()
     }
-
 
     //DELETE
     deleteContact(id){
