@@ -18,7 +18,7 @@ class Contacts{
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
-        this.contactsContainer.addEventListener('click', this.deleteContact.bind(this))
+        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))
         //DELETE ACTION???
         
     }
@@ -32,6 +32,9 @@ class Contacts{
         this.adapter.createContact(contactName, contactPhone, contactEmail)
             .then(contact => {
                 this.contacts.push(new Contact(contact))
+                this.newContactEmail.value = '',
+                this.newContactPhone.value = '',
+                this.newContactName.value = ''
         })
         .then( () => {
             this.render()
@@ -65,18 +68,17 @@ class Contacts{
         }
     }
 
-    deleteContact(e){
+    handleDeleteContact(e){
         const deleteBtn = e.target
         //console.log(deleteBtn.innerText)
         if(e.target.innerText === "Delete")
         {
             e.preventDefault()
             const deleteBtnId = e.target.dataset.id
-            const contactx = this.contacts.find(c => c.id == e.target.dataset.id)
-            console.log(contactx.id)
-            //const contact = this.contacts.find(c => c.id == e.target.dataset.id)
-            //here's all set, now moving on to the adapter
-            this.adapter.deleteContact(contactx)
+            const contact = this.contacts.find(c => c.id == e.target.dataset.id)
+            console.log(contact)
+            
+            this.adapter.deleteContact(contact, contact.id).then(() => {this.render()})
             // .then(contacts => {
             //     this.contacts.remove(contacts.selectedIndex)
             // })
@@ -84,6 +86,7 @@ class Contacts{
             //         this.render()
             //     })
             
+            // DELETES CONTANCTS BUT DOESNT RENDER NEW PAGE!!!!
         }
         
     }

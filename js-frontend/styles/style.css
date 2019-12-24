@@ -14,6 +14,11 @@
     font-size: 15px;
   }
   
+  button.delete {
+    float: left;
+    background-color: #E1332D;
+  }
+
   .active, .collapsible:hover {
     background-color: #555;
   }
@@ -23,4 +28,57 @@
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
+  }
+
+  p {
+    color: black;
+    font-family: Helvetica;
+  }
+
+  button {
+    font-size: .65em;
+    color: #fff;
+    background-color: green;
+    border-radius: 10px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .submit {
+    font-size: .65em;
+    color: #fff;
+    background-color: green;
+    border-radius: 10px;
+    background-color: #E1332D
+  }
+
+  header {
+    background-color: #4caf50;
+    margin: 0 auto;
+    height: 50px;
+  }
+
+  h1 {
+    padding: 10px;
+    margin: 0;
+    font-family: Helvetica;
+
+  }
+
+  input[type=text] {
+    background-color: #3CBC8D;
+    color: white;
+  }
+
+  input[type=text]:focus {
+    background-color: darkblue;
+  }
+
+  h3 {
+    color: black;
+    border-radius: 10px;
+    font-family: Helvetica;
   }
