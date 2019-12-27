@@ -30,6 +30,7 @@ class Contacts{
         this.adapter.createContact(contactName, contactPhone, contactEmail)
             .then(contact => {
                 this.contacts.push(new Contact(contact))
+                this.contacts.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0)
                 this.newContactEmail.value = '',
                 this.newContactPhone.value = '',
                 this.newContactName.value = ''
@@ -91,6 +92,8 @@ class Contacts{
             this.render()
         })
     }
+
+    
 
     render(){
         this.contactsContainer.innerHTML = this.contacts.map(contact => contact.renderLi()).join('')
