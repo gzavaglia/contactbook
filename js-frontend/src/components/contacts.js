@@ -18,9 +18,7 @@ class Contacts{
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
-        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))
-        //DELETE ACTION???
-        
+        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))        
     }
 
     createContact(e) {
@@ -43,7 +41,6 @@ class Contacts{
     }
 
     handleDoubleClick(e){
-        //console.log(e.target.dataset.id)
         const editTarget = e.target
         editTarget.focus()
         editTarget.contentEditable = true
@@ -57,14 +54,11 @@ class Contacts{
         if (e.keyCode === 13) {
             cont.contentEditable = false
             const contact = this.contacts.find(c => c.id == e.target.dataset.id)
-            //console.log(this.contacts.find(c => c.id == e.target.dataset.id))
             const nm = contact.name
             const ph = children[1].innerText
             const em = children[3].innerText
-            //console.log(ph, em)
             cont.contentEditable = false
             const contactid = e.target.dataset.id
-            //console.log(contactid)
             this.adapter.updateContact(nm,ph,em, contactid)
         }
     }
@@ -91,7 +85,7 @@ class Contacts{
         this.adapter
             .getContacts()
             .then(contacts => {
-                contacts.forEach(contact => this.contacts.push(new Contact(contact)))
+                contacts.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0).forEach(contact => this.contacts.push(new Contact(contact)))
         })
         .then( () => {
             this.render()
