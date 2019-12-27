@@ -55,38 +55,33 @@ class Contacts{
         const children = cont.children
         const contid = cont.parentElement.dataset.id
         if (e.keyCode === 13) {
+            cont.contentEditable = false
             const contact = this.contacts.find(c => c.id == e.target.dataset.id)
-            console.log(this.contacts.find(c => c.id == e.target.dataset.id))
+            //console.log(this.contacts.find(c => c.id == e.target.dataset.id))
             const nm = contact.name
             const ph = children[1].innerText
             const em = children[3].innerText
-            console.log(ph, em)
+            //console.log(ph, em)
             cont.contentEditable = false
             const contactid = e.target.dataset.id
-            console.log(contactid)
+            //console.log(contactid)
             this.adapter.updateContact(nm,ph,em, contactid)
         }
     }
 
     handleDeleteContact(e){
         const deleteBtn = e.target
-        //console.log(deleteBtn.innerText)
         if(e.target.innerText === "Delete")
         {
             e.preventDefault()
             const deleteBtnId = e.target.dataset.id
             const contact = this.contacts.find(c => c.id == e.target.dataset.id)
-            console.log(contact)
-            
-            this.adapter.deleteContact(contact, contact.id).then(() => {this.render()})
-            // .then(contacts => {
-            //     this.contacts.remove(contacts.selectedIndex)
-            // })
-            //     .then( () => {
-            //         this.render()
-            //     })
-            
-            // DELETES CONTANCTS BUT DOESNT RENDER NEW PAGE!!!!
+            const contactIndex = this.contacts.indexOf(contact)
+            this.adapter.deleteContact(contact, contact.id)
+            .then(contact => {
+                this.contacts.splice(contactIndex, 1);
+                })
+                 .then(() => {this.render()})
         }
         
     }

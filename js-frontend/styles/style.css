@@ -27,11 +27,11 @@
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #3d3535;
   }
 
   p {
-    color: black;
+    color: white;
     font-family: Helvetica;
   }
 
@@ -45,6 +45,7 @@
   body {
     margin: 0;
     padding: 0;
+    background-color: black;
   }
 
   .submit {
@@ -64,8 +65,9 @@
   h1 {
     padding: 10px;
     margin: 0;
-    font-family: Helvetica;
-
+    font-family: 'Press Start 2P', cursive;
+    color: turquoise;
+    text-align: center;
   }
 
   input[type=text] {
@@ -78,7 +80,7 @@
   }
 
   h3 {
-    color: black;
+    color: wheat;
     border-radius: 10px;
     font-family: Helvetica;
   }
