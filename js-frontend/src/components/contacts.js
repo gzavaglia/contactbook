@@ -42,7 +42,7 @@ class Contacts{
             this.errorsContainer = document.getElementById('error-messages')
             this.errorsContainer.innerHTML = `<div class="alert">
             <span class="closebtn">&times;</span>  
-            <strong>Sorry, you need a name to create a contact</strong>
+            <strong>Oops!</strong> Sorry, you need a name to create a contact
             </div>`
             var close = document.getElementsByClassName("closebtn");
                 var i;

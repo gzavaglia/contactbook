@@ -56,6 +56,18 @@ class ContactsAdapter{
     return await res.json()
  }
     //DELETE END
+
+
+    async checkStatus(res){
+        if (res.status <200 || res.status > 299){
+            const msg = await res.json()
+            let errorMsg = msg.errors.detail.detail
+            if(!errorMsg){
+                errorMsg = msg.error
+            }
+            throw new Error(errorMsg)
+        }
+    }
 }
 
 
