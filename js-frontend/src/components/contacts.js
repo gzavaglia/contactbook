@@ -26,7 +26,7 @@ class Contacts{
         const contactName = this.newContactName.value
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
-
+        if (contactName !== ''){
         this.adapter.createContact(contactName, contactPhone, contactEmail)
             .then(contact => {
                 this.contacts.push(new Contact(contact))
@@ -37,7 +37,24 @@ class Contacts{
         })
         .then( () => {
             this.render()
-        })
+        })}
+        else {
+            this.errorsContainer = document.getElementById('error-messages')
+            this.errorsContainer.innerHTML = `<div class="alert">
+            <span class="closebtn">&times;</span>  
+            <strong>Sorry, you need a name to create a contact</strong>
+            </div>`
+            var close = document.getElementsByClassName("closebtn");
+                var i;
+
+            for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+                }
+        }
         
     }
 
