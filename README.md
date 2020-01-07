@@ -2,11 +2,11 @@
 
 ## Gio's Flatiron Rails Project
 
-This is my 3rd project with Flatiron. This projects encapsules everything learn up to this point: Ruby, HTML, CSS, ActiveRecord, Rails, CRUD & REST.
+This is my 4th project with Flatiron. This projects encapsules everything learn up to this point: JavaScript, Ruby, HTML, CSS, ActiveRecord, Rails, CRUD & REST.
 
 ## The App
 
-This application helps you keep track of your favorite workouts! You can find the main workout database and add them to your list. Just Sign up/Log in using an email or through Facebook and start pumping iron!
+This is a single page app
 
 ## Getting Started
 

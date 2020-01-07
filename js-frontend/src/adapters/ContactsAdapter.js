@@ -21,6 +21,9 @@ class ContactsAdapter{
             },
             body: JSON.stringify({ contact })
         })
+        if(res.ok === false){
+            throw new Error('Contact was not created. Check the info and try again')
+        }
         return await res.json()
     }
 

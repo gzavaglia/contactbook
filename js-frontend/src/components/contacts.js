@@ -27,17 +27,34 @@ class Contacts{
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
         if (contactName !== ''){
-        this.adapter.createContact(contactName, contactPhone, contactEmail)
-            .then(contact => {
+                this.adapter.createContact(contactName, contactPhone, contactEmail).catch(function(err){
+                    const errorsContainer = document.getElementById('error-messages')
+                    errorsContainer.innerHTML = `<div class="alert">
+                    <span class="closebtn">&times;</span>  
+                    <strong>Oops!</strong> This phone number/email address already exists. Please check and try again
+                    </div>`
+                var close = document.getElementsByClassName("closebtn");
+                    var i;
+
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                    }
+                 }
+                })
+                    .then(contact => {
                 this.contacts.push(new Contact(contact))
                 this.contacts.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0)
                 this.newContactEmail.value = '',
                 this.newContactPhone.value = '',
                 this.newContactName.value = ''
-        })
+        }).catch(function(err){console.log(err)})
         .then( () => {
             this.render()
-        })}
+        })} 
+        
         else {
             this.errorsContainer = document.getElementById('error-messages')
             this.errorsContainer.innerHTML = `<div class="alert">
@@ -48,14 +65,13 @@ class Contacts{
                 var i;
 
             for (i = 0; i < close.length; i++) {
-            close[i].onclick = function(){
-            var div = this.parentElement;
-            div.style.opacity = "0";
-            setTimeout(function(){ div.style.display = "none"; }, 600);
+                close[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 600);
                 }
-                }
+            }
         }
-        
     }
 
     handleDoubleClick(e){

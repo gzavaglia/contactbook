@@ -12,9 +12,17 @@ class Api::V1::ContactsController < ApplicationController
     end
 
     def create
-        @contact = Contact.create(contact_params)
+        contact = Contact.create(contact_params)
+    if contact.save
+        render json: contact, status: 200
+    else
+        render json: {message: "Creating contact failed"}, status: 400
+    end
 
-        render json: @contact, status: 200
+    end
+
+    def edit 
+        @contact = Contact.find(params[:id])
     end
 
     def update

@@ -18,7 +18,14 @@ Contact.create(
         {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
         {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
         {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email}
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email}
     ]
 )
 
