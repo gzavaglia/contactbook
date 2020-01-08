@@ -46,18 +46,11 @@ or check out my [blog post]https://gzavaglia.github.io/js_rails_project_contact_
 ## Testing the App
 
 This app is avaliable to:
-- Sign Up: Create new user and authenticating passwords and the uniqueness of your email address
-- Log in: Utilize your email + password combo to log into your account.
-- Log in using Facebook.
-- Once you're logged in, you'll be welcome by your name.
-- You should be able to creat new workout and add them (new or from our database) into your list and see your workouts list.
-- Navigate into each Workout/Routine to see its details (such as calories burned, time/reps, muscle groups).
-- Search by muscle group in the workouts index page.
-- You can also edit your routines.
-- If you don't like that workout anymore you can always delete it!
-- Done? Try logging out! 
+- Create new contacts by adding the information asked and clicking submit
+- Update contacts by double-clicking on the phone number/email address
+- Delete contacts when clicking on the delete button
+- Throw an error if the contact that is being trying to create doesn't have a name or if the phone number/email address are already part of the database.
 
-Try doing all of this things!
 
 ### Built With
 - ActiveRecord
