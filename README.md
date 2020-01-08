@@ -6,7 +6,9 @@ This is my 4th project with Flatiron. This projects encapsules everything learn 
 
 ## The App
 
-This is a single page app
+This is a single page app used to keep track of your contacts emails and phone numbers.
+
+The backend is a database built using Rails-API and the frontend is built with JavaScript. 
 
 ## Getting Started
 
@@ -16,21 +18,30 @@ To get started with the app, clone the repo and then install the needed gems:
 $ bundle install
 ```
 
-Next, migrate the database:
+Next, we're going to set up the database, starting with the migration:
 
 ```
-$ rake db:migrate
+$ rails db:migrate
+```
+
+And adding seeds if you'd like with:
+
+```
+$ rails db:seed
 ```
 
 Then run the app in a local server:
 
 ```
-$ rails server
+$ rails s
 ```
+Now that the API is set up and ready to handle all the information thru the app, open the **index.html** file using chrome. 
+
+*And voila*, the app is ready for you to use!
 
 For more details about my web app you can [see my video walkthrough here](https://youtu.be/4gj6FD57kuo).
 
-or check out my [blog post](https://gzavaglia.github.io/rails_project_make_it_or_break_it).
+or check out my [blog post]https://gzavaglia.github.io/js_rails_project_contact_book).
 
 ## Testing the App
 
