@@ -39,7 +39,7 @@ Now that the API is set up and ready to handle all the information thru the app,
 
 *And voila*, the app is ready for you to use!
 
-For more details about my web app you can [see my video walkthrough here](https://youtu.be/4gj6FD57kuo).
+For more details about my web app you can [see my video walkthrough here](https://youtu.be/oTD9QlBKlAs).
 
 or check out my [blog post]https://gzavaglia.github.io/js_rails_project_contact_book).
 
