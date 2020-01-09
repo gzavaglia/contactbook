@@ -4,6 +4,7 @@ class Contact {
         this.name = contactJSON.name
         this.phone = contactJSON.phone
         this.email = contactJSON.email
+        this.nicknames = contactJSON.nicknames.map(n => n.nickname)
     }
 
     renderLi(){
@@ -13,10 +14,14 @@ class Contact {
             <p data-id="${this.id}" id="contact-phone">${this.phone}</p>
             <p>Email: </p> 
             <p data-id="${this.id}" id="contact-email">${this.email}</p>
+            <p>Nicknames: </p>
+            <p data-id="${this.id}" id="contact-nicknames">${this.nicknames}</p>
             <button type="button" class="delete" id="delete-btn" data-id=${this.id}>Delete</button>
         </div>
             
         `
     }    
+
+    
 
 }
