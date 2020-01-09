@@ -11,9 +11,11 @@ class Contacts{
         this.contactName = document.getElementById('contact-name')
         this.contactPhone = document.getElementById('contact-phone')
         this.contactEmail = document.getElementById('contact-email')
+        this.contactNicknames = document.getElementById('contact-nickname')
         this.newContactName = document.getElementById('new-contact-name')
         this.newContactPhone = document.getElementById('new-contact-phone')
         this.newContactEmail = document.getElementById('new-contact-email')
+        this.newContactNicknames = document.getElementById('new-contact-nickname')
         this.contactForm = document.getElementById('new-contact-form')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
@@ -26,6 +28,7 @@ class Contacts{
         const contactName = this.newContactName.value
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
+        const contactNickname = this.newContactNicknames.value
         if (contactName !== ''){
                 this.adapter.createContact(contactName, contactPhone, contactEmail).catch(function(err){
                     const errorsContainer = document.getElementById('error-messages')

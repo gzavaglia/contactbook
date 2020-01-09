@@ -2,7 +2,7 @@ class Api::V1::NicknamesController < ApplicationController
 
 def index
     nicknames = Nickname.all
-    render json: NicknamesSerializer.new(nickname).to_serialized_json
+    render json: NicknamesSerializer.new(nicknames).to_serialized_json
 end
 
 def create
