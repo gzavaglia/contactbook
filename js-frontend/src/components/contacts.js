@@ -21,12 +21,12 @@ class Contacts{
         this.newContactPhone = document.getElementById('new-contact-phone')
         this.newContactEmail = document.getElementById('new-contact-email')
         this.newContactNicknames = document.getElementById('new-contact-nickname')
+        this.userContainer.addEventListener('change', this.selectUser.bind(this)) 
         this.contactForm = document.getElementById('new-contact-form')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
         this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))     
-        this.userContainer.addEventListener('click', this.selectUser.bind(this)) 
     }
 
     createContact(e) {
@@ -35,7 +35,7 @@ class Contacts{
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
         if (contactName !== ''){
-            this.adapter.createContact(contactName, contactPhone, contactEmail).catch(function(err){
+            this.adapter.createContact(contactName, contactPhone, contactEmail, this.selectedUserId).catch(function(err){
                 const errorsContainer = document.getElementById('error-messages')
                 errorsContainer.innerHTML = 
                 `<div class="alert">
@@ -126,18 +126,14 @@ class Contacts{
     }
 
     selectUser(){
-        this.userSelector = document.getElementById('user-select')
-        this.userSelector.onchange = function() {
-            const userId = document.getElementById("user-select").value
-            console.log(userId)
-            return userId
-          }
+        this.selectedUserId = document.getElementById("user-select").value
+        console.log(this.selectedUserId)
     }
     
 
     fetchAndLoadContacts(){
         this.adapter
-            .getContacts()
+            .getContacts(this.selectedUserId)
             .then(contacts => {
                 contacts.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0).forEach(contact => this.contacts.push(new Contact(contact)))
         })
@@ -151,8 +147,6 @@ class Contacts{
             users.forEach(user => this.users.push(new User(user)))
         }).then(() => this.renderUsers())
     }
-
-    
 
     render(){
         this.contactsContainer.innerHTML = this.contacts.map(contact => contact.renderLi()).join('')

@@ -1,10 +1,10 @@
 class Api::V1::ContactsController < ApplicationController
     def index
-        # @contacts = Contact.all
+        @contacts = Contact.all
 
-        # render json: @contacts, status: 200
-        contacts = Contact.all
-        render json: ContactsSerializer.new(contacts).to_serialized_json, status: 200
+        render json: @contacts, status: 200
+        # contacts = Contact.all
+        # render json: ContactsSerializer.new(contacts).to_serialized_json, status: 200
     end
 
     def show
@@ -42,6 +42,6 @@ class Api::V1::ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(:contact).permit(:name, :phone, :email, :nickname_id)
+        params.require(:contact).permit(:name, :phone, :email, :user_id)
     end
 end
