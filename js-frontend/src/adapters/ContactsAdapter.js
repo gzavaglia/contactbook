@@ -29,14 +29,14 @@ class ContactsAdapter{
         return await res.json()
     }
 
-    async updateContact(name, phone, email, id){
+    async updateContact(name, phone, email, id, user_id){
         const contact = {
             name: name,
             phone: phone,
             email: email
         }
 
-        const res = await fetch(`${this.baseUrl}/${id}`, {
+        const res = await fetch(`${this.baseUrl}/${user_id}/contacts/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ class ContactsAdapter{
 
  async deleteContact(contact){
 
-    const res = await fetch(`${this.baseUrl}/${contact.id}`, {
+    const res = await fetch(`${this.baseUrl}/${contact.user_id}/contacts/${contact.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

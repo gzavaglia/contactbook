@@ -14,5 +14,4 @@ class User{
         return this.id
     }
 
-
 } //end class

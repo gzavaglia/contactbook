@@ -26,7 +26,7 @@ class Contacts{
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
         this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))     
-        this.userContainer.addEventListener('click', this.selectUser.bind(this))   
+        this.userContainer.addEventListener('click', this.selectUser.bind(this)) 
     }
 
     createContact(e) {
@@ -98,12 +98,13 @@ class Contacts{
         if (e.keyCode === 13) {
             cont.contentEditable = false
             const contact = this.contacts.find(c => c.id == e.target.dataset.id)
+            const userId = contact.user_id
             const nm = contact.name
             const ph = children[1].innerText
             const em = children[3].innerText
             cont.contentEditable = false
             const contactid = e.target.dataset.id
-            this.adapter.updateContact(nm,ph,em, contactid)
+            this.adapter.updateContact(nm,ph,em, contactid, userId)
         }
     }
 
@@ -127,7 +128,7 @@ class Contacts{
     selectUser(){
         this.userSelector = document.getElementById('user-select')
         this.userSelector.onchange = function() {
-            var userId = document.getElementById("user-select").value
+            const userId = document.getElementById("user-select").value
             console.log(userId)
             return userId
           }
