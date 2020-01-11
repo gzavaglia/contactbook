@@ -1,15 +1,14 @@
 class Api::V1::ContactsController < ApplicationController
     def index
-        @contacts = Contact.all
-
-        render json: @contacts, status: 200
-        # contacts = Contact.all
-        # render json: ContactsSerializer.new(contacts).to_serialized_json, status: 200
+        # @contacts = Contact.all
+        user = User.find(params[:user_id])
+        contacts = user.contacts
+        render json: ContactsSerializer.new(contacts).to_serialized_json, status: 200
     end
 
     def show
-        contact = Contact.find(params[:id])
-
+        user = User.find(params[:user_id])
+        contact = user.contacts
         render json: ContactsSerializer.new(contact).to_serialized_json, status: 200
     end
 

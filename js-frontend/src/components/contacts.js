@@ -127,19 +127,25 @@ class Contacts{
 
     selectUser(){
         this.selectedUserId = document.getElementById("user-select").value
+        this.fetchAndLoadContacts()
         console.log(this.selectedUserId)
     }
     
 
     fetchAndLoadContacts(){
-        this.adapter
+        if (this.selectedUserId)
+        {this.adapter
             .getContacts(this.selectedUserId)
             .then(contacts => {
                 contacts.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0).forEach(contact => this.contacts.push(new Contact(contact)))
         })
         .then( () => {
             this.render()
-        })
+        })}
+        else {
+            this.contactsContainer.innerHTML = `
+            <h1> PLEASE SELECT A USER TO CONTINUE </h1>`
+        }
     }
 
     fetchAndLoadUsers(){
