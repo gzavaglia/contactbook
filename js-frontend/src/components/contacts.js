@@ -1,13 +1,18 @@
 class Contacts{
     constructor(){
         this.contacts = []
+        this.userAdapter = new UsersAdapter()
         this.adapter = new ContactsAdapter()
         this.initBindingsAndEventListeners()
         this.fetchAndLoadContacts()
+        this.fetchAndLoadUsers()
+        this.users = []
     }
 
     initBindingsAndEventListeners(){
         this.contactsContainer = document.getElementById('contacts-container')
+        this.userSelector = document.getElementById('user-select')
+        this.userContainer = document.getElementById('user-container')
         this.contactName = document.getElementById('contact-name')
         this.contactPhone = document.getElementById('contact-phone')
         this.contactEmail = document.getElementById('contact-email')
@@ -20,7 +25,8 @@ class Contacts{
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
-        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))        
+        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))     
+        this.userContainer.addEventListener('click', this.selectUser.bind(this))   
     }
 
     createContact(e) {
@@ -28,16 +34,16 @@ class Contacts{
         const contactName = this.newContactName.value
         const contactPhone = this.newContactPhone.value
         const contactEmail = this.newContactEmail.value
-        const contactNickname = this.newContactNicknames.value
         if (contactName !== ''){
-                this.adapter.createContact(contactName, contactPhone, contactEmail).catch(function(err){
-                    const errorsContainer = document.getElementById('error-messages')
-                    errorsContainer.innerHTML = `<div class="alert">
-                    <span class="closebtn">&times;</span>  
-                    <strong>Oops!</strong> This phone number/email address already exists. Please check and try again
-                    </div>`
+            this.adapter.createContact(contactName, contactPhone, contactEmail).catch(function(err){
+                const errorsContainer = document.getElementById('error-messages')
+                errorsContainer.innerHTML = 
+                `<div class="alert">
+                <span class="closebtn">&times;</span>  
+                <strong>Oops!</strong> This phone number/email address already exists. Please check and try again
+                </div>`
                 var close = document.getElementsByClassName("closebtn");
-                    var i;
+                var i;
 
                 for (i = 0; i < close.length; i++) {
                     close[i].onclick = function(){
@@ -45,7 +51,7 @@ class Contacts{
                     div.style.opacity = "0";
                     setTimeout(function(){ div.style.display = "none"; }, 600);
                     }
-                 }
+                }
                 })
                     .then(contact => {
                 this.contacts.push(new Contact(contact))
@@ -53,10 +59,11 @@ class Contacts{
                 this.newContactEmail.value = '',
                 this.newContactPhone.value = '',
                 this.newContactName.value = ''
-        }).catch(function(err){console.log(err)})
-        .then( () => {
-            this.render()
-        })} 
+                }).catch(function(err){console.log(err)})
+                    .then( () => {
+                        this.render()
+                    }).catch(function(err){console.log(err)})
+        } 
         
         else {
             this.errorsContainer = document.getElementById('error-messages')
@@ -116,6 +123,15 @@ class Contacts{
         }
         
     }
+
+    selectUser(){
+        this.userSelector = document.getElementById('user-select')
+        this.userSelector.onchange = function() {
+            var userId = document.getElementById("user-select").value
+            console.log(userId)
+            return userId
+          }
+    }
     
 
     fetchAndLoadContacts(){
@@ -127,6 +143,12 @@ class Contacts{
         .then( () => {
             this.render()
         })
+    }
+
+    fetchAndLoadUsers(){
+        this.userAdapter.getUsers().then(users => {
+            users.forEach(user => this.users.push(new User(user)))
+        }).then(() => this.renderUsers())
     }
 
     
@@ -148,5 +170,14 @@ class Contacts{
           })
         } //collapsible end 
        
-    }
+    }// render end
+
+    renderUsers(){
+        this.userContainer.innerHTML = `
+        <select id='user-select'>
+                ${this.users.map(user => user.renderUsername())}
+        </select>`
+           }
+
+           
 }

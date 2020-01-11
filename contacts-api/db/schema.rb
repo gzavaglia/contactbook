@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_161804) do
+ActiveRecord::Schema.define(version: 2020_01_10_003612) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "phone"
     t.string "email"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "nicknames", force: :cascade do |t|
-    t.string "nickname"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "contact_id"
   end
 
 end

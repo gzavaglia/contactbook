@@ -1,20 +1,22 @@
 class ContactsAdapter{
     constructor(){
-        this.baseUrl = 'http://localhost:3000/api/v1/contacts'
+        this.baseUrl = 'http://localhost:3000/api/v1/users'
     }
 
-    getContacts(){
-        return fetch(this.baseUrl).then(res => res.json())
+    //add user_id
+    getContacts(user_id){
+        return fetch(`${this.baseUrl}/${user_id}/contacts`).then(res => res.json())
     }
-
-    async createContact(name, phone, email){
+    //add user
+    async createContact(name, phone, email, user_id){
         const contact = {
             name: name,
             phone: phone,
-            email: email
+            email: email,
+            user_id: user_id
         }
 
-        const res = await fetch(this.baseUrl, {
+        const res = await fetch(`${this.baseUrl}/${user_id}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

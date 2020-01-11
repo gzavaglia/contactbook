@@ -6,26 +6,27 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+user = User.create(username: "Gio")
+user2 = User.create(username: "Rocky")
 Contact.create(
     [
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email},
-        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email}
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::RuPaul.queen, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2},
+        {name: Faker::TvShows::Friends.character, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, user: user2}
     ]
 )
 

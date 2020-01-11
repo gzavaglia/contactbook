@@ -45,7 +45,7 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: rgb(73, 3, 3);
   }
 
   .submit {
@@ -84,6 +84,10 @@
     border-radius: 10px;
     font-family: Helvetica;
   }
+  
+  span{
+    color: wheat
+  }
 
   .closebtn {
     margin-left: 15px;
@@ -107,4 +111,23 @@
     opacity: 1;
     transition: opacity 0.6s;
     margin-bottom: 15px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: greenyellow;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(182, 26, 26, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
   }

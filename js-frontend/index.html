@@ -11,6 +11,11 @@
 <body>
     <div class="container"> 
         <h1>Contact Book</h1>
+
+        <div id= 'user-container'>
+            
+        </div>
+
         <div id="new-contact-container">
             <form id="new-contact-form">
                 <h3>Add a New Contact</h3>
@@ -20,8 +25,7 @@
                 <input type="text" name='contact-phone' id='new-contact-phone' /> </br>
                 <p>E-Mail Address: </p> 
                 <input type="text" name='contact-email' id='new-contact-email' /> </br>
-                <p>Nickname:</p>
-                <input type="text" name='contact-nickname' id='new-contact-nickname' /> </br>
+                
                 <input type="submit" />
             </form>
         </div>
@@ -38,8 +42,10 @@
         </div>
     </div>
     <script src="src/components/contacts.js"> </script>
+    <script src="src/components/user.js"> </script>
     <script src="src/components/contact.js"> </script>
     <script src="src/components/app.js"></script>
+    <script src="src/adapters/UsersAdapter.js"></script>
     <script src="src/adapters/ContactsAdapter.js"></script>
     <script src="src/index.js"></script>
 </body>
