@@ -127,6 +127,7 @@ class Contacts{
 
     selectUser(){
         this.selectedUserId = document.getElementById("user-select").value
+        this.contacts = []
         this.fetchAndLoadContacts()
         console.log(this.selectedUserId)
     }
@@ -176,6 +177,7 @@ class Contacts{
     renderUsers(){
         this.userContainer.innerHTML = `
         <select id='user-select'>
+                <option value="zilch">SELECT USER</option>
                 ${this.users.map(user => user.renderUsername())}
         </select>`
            }
