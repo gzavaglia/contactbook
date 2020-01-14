@@ -131,3 +131,14 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  .fa {
+    font-size: 1000px;
+    cursor: pointer;
+    user-select: none;
+    color: gray;
+  }
+  
+  /* .fa:hover {
+    color: white;
+  } */

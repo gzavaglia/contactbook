@@ -6,6 +6,7 @@ class Contacts{
         this.initBindingsAndEventListeners()
         this.fetchAndLoadContacts()
         this.fetchAndLoadUsers()
+        //this.createFavorite()
         this.users = []
     }
 
@@ -16,6 +17,7 @@ class Contacts{
         this.contactName = document.getElementById('contact-name')
         this.contactPhone = document.getElementById('contact-phone')
         this.contactEmail = document.getElementById('contact-email')
+        this.icon = document.getElementById('fave')
         this.contactNicknames = document.getElementById('contact-nickname')
         this.newContactName = document.getElementById('new-contact-name')
         this.newContactPhone = document.getElementById('new-contact-phone')
@@ -23,10 +25,12 @@ class Contacts{
         this.newContactNicknames = document.getElementById('new-contact-nickname')
         this.userContainer.addEventListener('change', this.selectUser.bind(this)) 
         this.contactForm = document.getElementById('new-contact-form')
+        this.checkBox = document.getElementById('favorite-contact')
         this.contactForm.addEventListener('submit', this.createContact.bind(this))
         this.contactsContainer.addEventListener('dblclick', this.handleDoubleClick.bind(this))
         this.contactsContainer.addEventListener('keyup', this.updateContact.bind(this))
-        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))     
+        this.contactsContainer.addEventListener('click', this.handleDeleteContact.bind(this))
+        this.contactsContainer.addEventListener('click', this.favoriteContact.bind(this))
     }
 
     createContact(e) {
@@ -108,6 +112,17 @@ class Contacts{
         }
     }
 
+    favoriteContact(e){
+        var faveButton = e.target.id
+        if(faveButton === "fave"){
+            if(e.target.style.color === "yellow"){
+                e.target.style.color ="gray"
+            } else {
+                e.target.style.color = "yellow"
+            }
+        }
+    }
+
     handleDeleteContact(e){
         const deleteBtn = e.target
         if(e.target.innerText === "Delete")
@@ -125,12 +140,22 @@ class Contacts{
         
     }
 
+
     selectUser(){
         this.selectedUserId = document.getElementById("user-select").value
         this.contacts = []
         this.fetchAndLoadContacts()
         console.log(this.selectedUserId)
     }
+
+    // createFavorite(){
+
+    //     if (this.checkBox.checked == true){
+    //         this.favText.style.display = "block";
+    //       } else {
+    //          this.favText.style.display = "none";
+    //     }
+    // }
     
 
     fetchAndLoadContacts(){
